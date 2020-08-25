@@ -1,29 +1,29 @@
-name: tweet-delete
-on:
-  # Run at 23:45 every Sunday
-  schedule:
-    - cron: 45 23 * * 0
-  # Run when pushed to master
-  push:
-    branches:
-      - master
-jobs:
-  tweet-delete:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Download ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.x
-    - name: Install twurl
-      run: gem install twurl
-    - name: Run pre-flight-checks.sh
-      run: /bin/bash pre-flight-checks.sh    
-    - name: Run tweet-delete.sh
-      env:
-          twitter_consumer_api_key: ${{ secrets.twitter_consumer_api_key }}
-          twitter_consumer_api_secret_key: ${{ secrets.twitter_consumer_api_secret_key }}
-          twitter_access_token: ${{ secrets.twitter_access_token }}
-          twitter_access_token_secret: ${{ secrets.twitter_access_token_secret}}
-      run: /bin/bash tweet-delete.sh
+#name: tweet-delete
+#on:
+#  # Run at 23:45 every Sunday
+#  schedule:
+#    - cron: 45 23 * * 0
+#  # Run when pushed to master
+#  push:
+#    branches:
+#      - master
+#jobs:
+#  tweet-delete:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@master
+#    - name: Download ruby 2.6
+#      uses: actions/setup-ruby@v1
+#      with:
+#        ruby-version: 2.6.x
+#    - name: Install twurl
+#      run: gem install twurl
+#    - name: Run pre-flight-checks.sh
+#      run: /bin/bash pre-flight-checks.sh    
+#    - name: Run tweet-delete.sh
+#      env:
+#          twitter_consumer_api_key: ${{ secrets.twitter_consumer_api_key }}
+#          twitter_consumer_api_secret_key: ${{ secrets.twitter_consumer_api_secret_key }}
+#          twitter_access_token: ${{ secrets.twitter_access_token }}
+#          twitter_access_token_secret: ${{ secrets.twitter_access_token_secret}}
+#      run: /bin/bash tweet-delete.sh
